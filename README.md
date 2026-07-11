@@ -141,9 +141,9 @@ Generated business insights including:
 - KPI Summary Dashboard
 ```
 
-## **Datasets**
+# Datasets
 
-### **Incoming CSV Files**
+### Incoming CSV Files
 
 The project uses the following CSV datasets received through **Gmail**, which are automatically processed by the **n8n** workflow and loaded into **Supabase PostgreSQL**.
 
@@ -154,7 +154,7 @@ The project uses the following CSV datasets received through **Gmail**, which ar
 
 ---
 
-### **Dimension Tables**
+### Dimension Tables
 
 The following dimension tables were used to enrich transactional data and build the analytical data model.
 
@@ -167,7 +167,7 @@ The following dimension tables were used to enrich transactional data and build 
 
 ---
 
-### **Fact Tables**
+### Fact Tables
 
 The following fact tables were used for supply chain analytics.
 
@@ -179,26 +179,29 @@ The following fact tables were used for supply chain analytics.
 
 ---
 
-### **Exchange Rate Table**
+### Exchange Rate Table
 
 Historical exchange rates were generated using the **Open Exchange Rates Historical API** to convert **USD** order values into **INR** before analysis.
 
 **Currency Conversion**
+
 - USD → INR
 
 **Date Range**
+
 - 01 March 2025
 - 17 May 2025
 
+---
 
-## **Data Model**
+# Data Model
 
-### **Dimension Tables**
+### Dimension Tables
 
 The following dimension tables were used to enrich transactional data and support the analytical data model.
 
-| **Table** | **Description** |
-|------------|-----------------|
+| Table | Description |
+|--------|-------------|
 | `dim_customers` | Customer information including customer details and city |
 | `dim_products` | Product information including pricing and currency |
 | `dim_targets_orders` | Target values for On-Time (OT), In-Full (IF), and On-Time In-Full (OTIF) performance |
@@ -206,60 +209,69 @@ The following dimension tables were used to enrich transactional data and suppor
 
 ---
 
-### **Fact Tables**
+### Fact Tables
 
 The following fact tables store transactional and delivery performance data used for analytics.
 
-| **Table** | **Description** |
-|------------|-----------------|
+| Table | Description |
+|--------|-------------|
 | `fact_order_line` | Order line-level transactional data |
 | `fact_aggregate` | Order-level delivery performance data |
 | `fact_summary` | Final consolidated analytical dataset created by merging fact tables, dimension tables, and exchange rate data |
 
+---
 
-
-## **Tools & Technologies**
+# Tools & Technologies
 
 The following tools and technologies were used throughout the project.
 
-| **Category** | **Technology** |
-|--------------|----------------|
-| **Email Automation** | Gmail |
-| **Workflow Automation** | n8n |
-| **Database** | Supabase PostgreSQL |
-| **Programming Language** | Python |
-| **Data Processing** | Pandas, NumPy |
-| **Analytics Platform** | Quadratic |
-| **Visualization** | Plotly |
-| **API Integration** | Open Exchange Rates Historical API |
+| Category | Technology |
+|----------|------------|
+| Email Automation | Gmail |
+| Workflow Automation | n8n |
+| Database | Supabase PostgreSQL |
+| Programming Language | Python |
+| Data Processing | Pandas, NumPy |
+| Analytics Platform | Quadratic |
+| Visualization | Plotly |
+| API Integration | Open Exchange Rates Historical API |
 
 ---
 
-## **Data Cleaning & Preparation**
+# Data Cleaning & Preparation
 
-The following preprocessing and transformation steps were performed before analysis:
+The following preprocessing and transformation steps were performed before analysis.
 
-- Converted `product_id` and `customer_id` to numeric data types
-- Removed rows containing NULL IDs
-- Trimmed leading and trailing whitespaces from key columns
-- Converted date columns to `datetime` format
-- Merged dimension and fact tables using appropriate keys
-- Converted USD order values into INR using daily exchange rates
-- Removed intermediate and unnecessary columns
-- Generated a consolidated analytical dataset (`fact_summary`) for reporting and analysis
+- Converted `product_id` and `customer_id` to numeric data types.
+- Removed rows containing NULL IDs.
+- Trimmed leading and trailing whitespaces from key columns.
+- Converted date columns to `datetime` format.
+- Merged dimension and fact tables using appropriate keys.
+- Converted USD order values into INR using daily exchange rates.
+- Removed intermediate and unnecessary columns.
+- Generated a consolidated analytical dataset (`fact_summary`) for reporting and analysis.
 
 ---
 
-## **Exchange Rate Conversion**
+# Exchange Rate Conversion
 
 Historical exchange rates were generated using the **Open Exchange Rates Historical API** to convert **USD** order values into **INR** before performing business analysis.
 
-### **Business Logic**
+### Business Logic
 
 **For USD Orders**
 
 ```text
 Total Amount = Price_USD × USD_INR_Rate × Order Quantity
+```
+
+**For INR Orders**
+
+```text
+Total Amount = Price_INR × Order Quantity
+```
+
+All order values were converted into **Indian Rupees (INR)** before analysis.
 ```
 
 **For INR Orders**
