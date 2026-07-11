@@ -377,9 +377,13 @@ Project developed using **Supabase PostgreSQL**.
 
 > Note: The Supabase dashboard requires authentication and cannot be accessed publicly.
 
-### **n8n Workflow**
+## **n8n Workflow**
 
-Workflow JSON exported from n8n is available in this repository.
+The workflow automatically monitors Gmail for incoming CSV attachments, extracts the datasets, and inserts them into Supabase PostgreSQL.
+
+<p align="center">
+  <img src="N8N/workflow_n8n.jpg" width="900">
+</p>
 
 ### **Exchange Rate API**
 
