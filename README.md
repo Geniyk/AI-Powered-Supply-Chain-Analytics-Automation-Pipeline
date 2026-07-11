@@ -379,11 +379,13 @@ The chart below shows the monthly On-Time Delivery (%) trend across different ci
   <img src="Quadratic/monthly_ot_performance.png.jpg" width="900">
 </p>
 
-### **Supabase Database**
+## **Supabase Database Tables**
 
-Project developed using **Supabase PostgreSQL**.
+The project uses **Supabase PostgreSQL** as the centralized data warehouse for storing all dimension tables, fact tables, and the consolidated analytical dataset used for reporting and business analysis.
 
-> Note: The Supabase dashboard requires authentication and cannot be accessed publicly.
+<p align="center">
+  <img src="Supabase/Database_Table.png" alt="Supabase Database Tables" width="1000"/>
+</p>
 
 ## **n8n Workflow**
 
