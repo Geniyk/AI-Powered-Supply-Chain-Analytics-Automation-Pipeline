@@ -370,6 +370,14 @@ Supply-Chain-Analytics-Automation/
 ### **Quadratic Workbook**
 
 https://app.quadratichq.com/file/7a6c51b4-870c-42f9-a0d2-aeb5d8938193
+ 
+    **Monthly On-Time Delivery Performance**
+
+The chart below shows the monthly On-Time Delivery (%) trend across different cities from March 2025 to May 2025.
+
+<p align="center">
+  <img src="Quadratic/monthly_ot_performance.png.jpg" width="900">
+</p>
 
 ### **Supabase Database**
 
